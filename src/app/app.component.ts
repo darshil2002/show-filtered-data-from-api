@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AsyncSubject, Observable, ReplaySubject, concat, merge,from, of, map, mergeMap, concatMap, switchMap, delay, pluck, debounceTime, distinctUntilChanged } from 'rxjs';
+import { AsyncSubject, Observable, ReplaySubject, concat, merge,from, of, map, mergeMap, concatMap, switchMap, delay, pluck, debounceTime, distinctUntilChanged, tap } from 'rxjs';
 // import {MyServiceService}from './allServ/my-service.service'
 import {MyServiceService}  from './allServ/my-service.service'
 
@@ -18,22 +18,21 @@ export class AppComponent  {
   { 
   }
 
-  ngAfterViewInit(): void {
-
+  ngAfterViewInit() {
+    
     const formValue=this.searchForm?.valueChanges;
     formValue?.pipe(
-    pluck('searTerm'),
-    debounceTime(1000),
-   ).subscribe(res=>{
+      map(res => res['searTerm']),
+      // pluck('searTerm'),
+     
+      debounceTime(1000),
+    
+    distinctUntilChanged(),
+    switchMap(data=> this.searchService.getSearches(data))).subscribe(res=>{
       console.log(res);
     })
   }
   title = 'y';
-  
-  // ngOnInit() {
-  //   this.searchService.getSearches().subscribe((data: string) => {
-  //     console.log(data);
-  //   });
-  // }
+
 }
 
