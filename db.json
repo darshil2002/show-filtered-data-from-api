@@ -1,0 +1,24 @@
+{
+  "allData": [
+    {
+      "name": "darshil",
+      "uni": "sou",
+      "id": 1
+    },
+    {
+      "name": "suchit",
+      "uni": "sou",
+      "id": 2
+    },
+    {
+      "name": "kaushal",
+      "uni": "gu",
+      "id": 3
+    },
+    {
+      "name": "priya",
+      "uni": "gu",
+      "id": 4
+    }
+  ]
+}
