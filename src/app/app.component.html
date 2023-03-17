@@ -10,7 +10,8 @@
 <div class="my-3">
   <form #searchForm="ngForm">
     <div> 
-      <input type="text" class="form-control form-control-lg w-50 m-auto mt-3" name="searTerm" id="" placeholder="search here" 
+      <input type="text" class="form-control form-control-lg w-50 m-auto mt-3" name="searTerm" id="" placeholder="search here"  
+      
       autocomplete="off"
       ngModel>
     </div>
@@ -27,11 +28,12 @@
       
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
+    <tbody id="tbody">
+      
+      <tr *ngFor="let i of serachResult; let x=index">
+        <td >{{x+1}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.uni}}</td>
       </tr>
   
     </tbody>

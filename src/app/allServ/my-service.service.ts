@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { serach } from './allInterface/searh.interface';
+import { search } from './allInterface/searh.interface';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class MyServiceService {
   
   constructor(private http:HttpClient) {}
   
-  getSearches(sea: string):Observable<serach>{
-      return this.http.get<serach>(this.url+'?q='+sea)
+  getSearches(sea: string):Observable<search>{
+    return this.http.get<search>(this.url+'?q='+sea)
   }
 }
